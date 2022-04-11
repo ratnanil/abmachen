@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<head>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap');
+
+
+        body{
+            font-family: 'Grape Nuts', cursive;
+            font-size: xx-large;
+            color: beige;
+            background-color: black;
+        }
+        
+    </style> 
+
+    <script type="text/javascript">
+        function ISO8601_week_no() {
+            var dt = new Date()
+            var tdt = new Date(dt.valueOf());
+            var dayn = (dt.getDay() + 6) % 7;
+            tdt.setDate(tdt.getDate() - dayn + 3);
+            var firstThursday = tdt.valueOf();
+            tdt.setMonth(0, 1);
+            if (tdt.getDay() !== 4) {
+                tdt.setMonth(0, 1 + ((4 - tdt.getDay()) + 7) % 7);
+            }
+            return 1 + Math.ceil((firstThursday - tdt) / 604800000);
+        }
+
+        var kw = ISO8601_week_no()
+
+        var ronja_auswaerts = kw % 2 == 0
+
+        if(ronja_auswaerts){
+            ronja_location = "auswärts"
+            paula_location = "zuhause"
+        } else{
+            ronja_location = "zuhause"
+            paula_location = "auswärts"
+        }
+
+        
+
+        function myfun() {
+            document.getElementById("kw").innerHTML = kw
+            document.getElementById("ronja_auswaerts").innerHTML = ronja_location
+            document.getElementById("paula_auswaerts").innerHTML = paula_location
+            
+        }
+        window.onload = myfun;
+        console.log(ISO8601_week_no())
+
+    </script>
+</head>
+
+<body>
+    
+
+    <div style="display: grid; grid-template-columns: auto auto;">
+        <div>Kalenderwoche</div>
+        <div id="kw"></div>
+        <div>Ronja:</div>
+        <div id="ronja_auswaerts"></div>
+        <div>Paula:</div>
+        <div id="paula_auswaerts"></div>
+    </div>
+</body>
+
+</html>
