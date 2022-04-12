@@ -3,14 +3,21 @@
 <head>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Oswald:wght@600&display=swap');
 
         
         body{
-            font-family: 'Grape Nuts', cursive;
+            font-family: 'Oswald', sans-serif;
             font-size: 500%;
             color: beige;
             background-color: black;
+        }
+        #container{
+            display: grid; 
+            grid-template-columns: max-content max-content; 
+            column-gap: 10px; 
+            row-gap: 0px;
+            position: absolute;
         }
         
     </style> 
@@ -58,8 +65,7 @@
 
         function myfun() {
             document.getElementById("kw").innerHTML = kw
-            document.getElementById("first").innerHTML = period["last"]
-            document.getElementById("last").innerHTML = period["last"]
+            document.getElementById("period").innerHTML = period["first"]+"<br>"+period["last"]
 
             document.getElementById("ronja_auswaerts").innerHTML = ronja_location
             document.getElementById("paula_auswaerts").innerHTML = paula_location
@@ -73,20 +79,20 @@
 
 <body>
     
-
-    <div style="display: grid; grid-template-columns: auto auto;">
+    <div id="container">
         
-        <div>KW:</div>
+        <div>KW</div>
         <div id="kw"></div>
         
-        <div id="first" style="font-size: 60%;"></div>
-        <div id="last" style="font-size: 60%;"></div>
+        <div>Woche</div>
+        <div id="period" style="font-size: 50%;"></div>
 
-        <div>Ronja:</div>
+        <div>Ronja</div>
+        
         <div id="ronja_auswaerts"></div>
-        
-        
-        <div>Paula:</div>
+
+        <div>Paula</div>
+
         <div id="paula_auswaerts"></div>
     </div>
 </body>
